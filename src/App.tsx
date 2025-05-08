@@ -55,6 +55,7 @@ function App() {
           {msg.content}
         </p>
       ))}
+      
     </div>
     <input
       type="text"

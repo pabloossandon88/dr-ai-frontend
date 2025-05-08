@@ -44,3 +44,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+# dr-ai-frontend
+Interfaz web del asistente médico virtual DR-AI. Desarrollada con React y TypeScript, permite a los usuarios interactuar de manera sencilla con el asistente de inteligencia artificial. Esta aplicación está pensada para ser intuitiva, responsiva y funcional en cualquier dispositivo.
