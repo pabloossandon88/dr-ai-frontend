@@ -5,10 +5,11 @@ import MainLayout from '../layouts/MainLayout';
 const GeneralConditions = () => {
   return (
     <MainLayout>
+        {/*
         Informacion General
-
-        <div className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow-md mt-10">
-  <h2 className="text-2xl font-semibold mb-4">Formulario de Control General</h2>
+        */}
+        <div className="max-w-xl w-full mx-auto p-6 bg-white rounded-xl shadow-md">
+  <h2 className="text-teal-700 text-2xl font-semibold mb-4">Control General</h2>
   
   <form className="space-y-4">
     <div>

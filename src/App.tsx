@@ -12,41 +12,39 @@ const Home = () => {
   return (
     <MainLayout>
       
-      <div className="max-w-5xl w-full p-6 bg-gray">
+      <div className="max-w-5xl w-full p-3 bg-gray">
         {/*
         <h1 className="text-3xl font-bold text-center mb-8">🩺 Doctor Virtual Chileno</h1> 
         */}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <a  href="/diabetes" 
-              onClick={() => navigate("/diabetes")}
-              className="md:col-span-2 bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
-            <h2 className="text-xl font-semibold mb-2">Ajuste de Fármacos</h2>
-            <p className="text-gray-600">Diabetes</p>
+        <div className="grid grid-cols-1 grid-cols-12 gap-3">
+          <a  onClick={() => navigate("/diabetes")}
+              className="col-span-7 bg-teal-100 rounded-xl shadow-md p-3 hover:bg-blue-50 transition">
+            <h2 className="text-lg text-teal-700 font-semibold mb-2">Ajuste de Fármacos</h2>
+            <p className="text-xs text-teal-700">Diabetes</p>
           </a>
-          <a  href="/colesterol" 
-              onClick={() => navigate("/colesterol")}
-              className="bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
-            <h2 className="text-xl font-semibold mb-2">Control de Colesterol</h2>
-            <p className="text-gray-600">Información y seguimiento</p>
+          
+          <a  onClick={() => navigate("/hipertension")}
+              className="col-span-5 bg-white rounded-xl shadow-md p-3 hover:bg-blue-50 transition">
+            <h2 className="text-lg font-semibold text-teal-700 mb-2">Hipertensión</h2>
+            <p className="text-xs text-teal-700">Recomendaciones y ajustes</p>
           </a>
-          <a  href="/hipertension" 
-              onClick={() => navigate("/hipertension")}
-              className="bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
-            <h2 className="text-xl font-semibold mb-2">Manejo de Hipertensión</h2>
-            <p className="text-gray-600">Recomendaciones y ajustes</p>
+          <a  onClick={() => navigate("/colesterol")}
+              className="col-span-5 bg-white rounded-xl shadow-md p-3 hover:bg-blue-50 transition">
+            <h2 className="text-lg text-teal-700 font-semibold mb-2">Colesterol</h2>
+            <p className="text-xs text-teal-700">Información y seguimiento</p>
           </a>
-          <a  href="/enfermedad" 
-              onClick={() => navigate("/enfermedad")}
-              className="md:col-span-2 bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
-            <h2 className="text-xl font-semibold mb-2">Información General</h2>
-            <p className="text-gray-600">Sobre enfermedades comunes</p>
+
+          <a  onClick={() => navigate("/enfermedad")}
+              className="col-span-7 bg-teal-100 rounded-xl shadow-md p-3 hover:bg-blue-50 transition">
+            <h2 className="text-lg text-teal-700 font-semibold mb-2">Informacion General</h2>
+            <p className="text-xs text-teal-700">Sobre enfermedades comunes</p>
           </a>
-          <a  href="/chat" 
-              onClick={() => navigate("/chat")}
-              className="md:col-span-3 bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
-            <h2 className="text-xl font-semibold mb-2">Doctor Virtual</h2>
-            <p className="text-gray-600">Habla con el asistente médico</p>
+          
+          <a  onClick={() => navigate("/chat")}
+              className="col-span-12 bg-teal-500 rounded-xl shadow-md p-3 hover:bg-blue-50 transition">
+            <h2 className="text-lg text-white font-semibold mb-2">Doctor Virtual</h2>
+            <p className="text-xs text-teal-100">Habla con el asistente médico</p>
           </a>
         </div>
 
