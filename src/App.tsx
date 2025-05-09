@@ -1,70 +1,72 @@
-import { useState } from "react";
-import axios from "axios";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import ChatInterface from "./pages/ChatInterface";
+import CholesterolManagement from "./pages/CholesterolManagement";
+import DiabetesAdjustment from "./pages/DiabetesAdjustment";
+import HypertensionManagement from "./pages/HypertensionManagement";
+import GeneralConditions from "./pages/GeneralConditions";
+import MainLayout from './layouts/MainLayout';
 
-type Message = {
-  role: "user" | "assistant";
-  content: string;
+const Home = () => {
+  const navigate = useNavigate();
+
+  return (
+    <MainLayout>
+      
+      <div className="max-w-5xl w-full p-6 bg-gray">
+        {/*
+        <h1 className="text-3xl font-bold text-center mb-8">🩺 Doctor Virtual Chileno</h1> 
+        */}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <a  href="/diabetes" 
+              onClick={() => navigate("/diabetes")}
+              className="md:col-span-2 bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
+            <h2 className="text-xl font-semibold mb-2">Ajuste de Fármacos</h2>
+            <p className="text-gray-600">Diabetes</p>
+          </a>
+          <a  href="/colesterol" 
+              onClick={() => navigate("/colesterol")}
+              className="bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
+            <h2 className="text-xl font-semibold mb-2">Control de Colesterol</h2>
+            <p className="text-gray-600">Información y seguimiento</p>
+          </a>
+          <a  href="/hipertension" 
+              onClick={() => navigate("/hipertension")}
+              className="bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
+            <h2 className="text-xl font-semibold mb-2">Manejo de Hipertensión</h2>
+            <p className="text-gray-600">Recomendaciones y ajustes</p>
+          </a>
+          <a  href="/enfermedad" 
+              onClick={() => navigate("/enfermedad")}
+              className="md:col-span-2 bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
+            <h2 className="text-xl font-semibold mb-2">Información General</h2>
+            <p className="text-gray-600">Sobre enfermedades comunes</p>
+          </a>
+          <a  href="/chat" 
+              onClick={() => navigate("/chat")}
+              className="md:col-span-3 bg-white rounded-xl shadow-md p-6 hover:bg-blue-50 transition">
+            <h2 className="text-xl font-semibold mb-2">Doctor Virtual</h2>
+            <p className="text-gray-600">Habla con el asistente médico</p>
+          </a>
+        </div>
+
+      </div>
+    </MainLayout>
+  );
 };
 
 function App() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState<string>("");
-
-  const sendMessage = async () => {
-    if (!input.trim()) return;
-
-    const userMessage: Message = { role: "user", content: input };
-    setMessages([...messages, userMessage]);
-
-    try {
-      const res = await axios.post("http://localhost:3001/api/chat", {
-        message: input,
-      });
-
-      const botMessage: Message = {
-        role: "assistant",
-        content: res.data.reply,
-      };
-
-      setMessages((prev) => [...prev, userMessage, botMessage]);
-    } catch (err) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Error al contactar al doctor virtual.",
-        },
-      ]);
-    }
-
-    setInput("");
-  };
-
   return (
-    <div className="container">
-    <h2>🩺 Doctor Virtual Chileno</h2>
-    <div className="flex justify-center items-center h-screen bg-gray-100 ">
-      <button className="px-6 py-3 text-white bg-green-700 hover:bg-blue-700 rounded-lg shadow-md">
-        ¡Tailwind está funcionandooo!
-      </button>
-    </div>
-    <div className="chat-box rounded-xl">
-      {messages.map((msg, i) => (
-        <p key={i}>
-          <strong>{msg.role === "user" ? "Paciente" : "Doctor"}:</strong>{" "}
-          {msg.content}
-        </p>
-      ))}
-      
-    </div>
-    <input
-      type="text"
-      value={input}
-      onChange={(e) => setInput(e.target.value)}
-      placeholder="Escribe tus síntomas..."
-    />
-    <button onClick={sendMessage}>Enviar</button>
-  </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/diabetes" element={<DiabetesAdjustment />} />
+        <Route path="/colesterol" element={<CholesterolManagement />} />
+        <Route path="/hipertension" element={<HypertensionManagement />} />
+        <Route path="/enfermedad" element={<GeneralConditions />} />
+        <Route path="/chat" element={<ChatInterface />} />
+      </Routes>
+    </Router>
   );
 }
 
