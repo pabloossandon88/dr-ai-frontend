@@ -14,9 +14,9 @@ const Header = () => {
       {/* Título o logo */}
       <h1
         className="text-xl font-bold cursor-pointer select-none"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/home")}
       >
-        DR-AI
+        Asistente Clínico
       </h1>
 
       {/* Menú de usuario */}
@@ -26,10 +26,7 @@ const Header = () => {
         </button>
         <div className="absolute right-0 mt-2 w-32 bg-white text-black rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none group-hover:pointer-events-auto">
           <button
-            onClick={() => {
-              console.log("Cerrar sesión");
-              // Aquí va tu lógica de logout
-            }}
+            onClick={() => navigate("/")}
             className="block w-full text-left px-4 py-2 hover:bg-gray-100"
           >
             Cerrar sesión

@@ -15,7 +15,7 @@ const MainLayout = ({ children }: Props) => {
       <Header />
       <main className="p-4 pt-20 flex flex-col items-center">{children}</main>
       <footer className="fixed bottom-0 w-full bg-teal-700  text-center p-4 mt-auto">
-        <p className="text-sm text-teal-400">© 2025 DR-AI</p>
+        <p className="text-sm text-teal-400">© 2025 Asistente Clínico</p>
       </footer>
     </div>
   );

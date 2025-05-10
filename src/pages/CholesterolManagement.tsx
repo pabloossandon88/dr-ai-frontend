@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import Label from '../components/Label';
+import Modal from '../components/Modal';
 
 const CholesterolManagement = () => {
+
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const mostrarModal = (e: React.FormEvent) => {
+    e.preventDefault();
+    setModalAbierto(true);
+  };
+
   return (
     <MainLayout>
       <div className="max-w-xl w-full mx-auto p-6 bg-white rounded-xl shadow-md">
         <h2 className="text-teal-700 text-2xl font-semibold mb-4">Control de Colesterol</h2>
 
-        <form className="space-y-6">
+        <form onSubmit={mostrarModal} className="space-y-6">
           <div>
             <Label text="Fecha" />
             <input
@@ -83,6 +91,19 @@ const CholesterolManagement = () => {
             </button>
           </div>
         </form>
+
+        <Modal isOpen={modalAbierto} onClose={() => setModalAbierto(false)}>
+    <h2 className="text-xl font-semibold mb-4">Resultado del Cálculo</h2>
+    <p className="text-gray-700 mb-2">El tratamiento recomendado es...</p>
+    {/* Aquí puedes insertar los datos dinámicos del cálculo */}
+    <button
+      onClick={() => setModalAbierto(false)}
+      className="mt-4 bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600"
+    >
+      Cerrar
+    </button>
+  </Modal>
+  
       </div>
     </MainLayout>
   );
