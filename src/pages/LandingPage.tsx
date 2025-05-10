@@ -54,11 +54,15 @@ export default function LandingPage() {
         {/* Use Case */}
         <section className="py-20 px-6 bg-white">
   <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-  <img 
-    src={atencionDoctor} 
-    alt="Atención Doctor" 
-    className="rounded-xl shadow-md"
-    />
+  <div className="relative rounded-xl shadow-md overflow-hidden">
+      <img 
+        src={atencionDoctor} 
+        alt="Atención Doctor" 
+        className="w-full h-auto object-cover"
+      />
+      {/* Layer teal con opacidad */}
+      <div className="absolute inset-0 bg-teal-500 opacity-40"></div>
+    </div>
     <div>
       <h2 className="text-3xl text-teal-600 font-bold mb-4">Asiste tus decisiones clínicas, en el momento preciso</h2>
       <p className="text-teal-600 mb-6">
