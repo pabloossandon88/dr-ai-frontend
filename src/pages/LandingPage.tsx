@@ -1,9 +1,11 @@
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Syringe, Bot, MousePointerClick } from "lucide-react";
 import atencionDoctor from '../assets/images/atencion-doctor.png';
 
 export default function LandingPage() {
     const navigate = useNavigate();
+    const [mostrarExplicacion, setMostrarExplicacion] = useState(false);
     return (
       <div className="bg-white text-gray-800">
         {/* Hero Section */}
@@ -69,9 +71,32 @@ export default function LandingPage() {
         Asistente Clínico Digital te permite calcular tratamientos, revisar síntomas frecuentes y acceder a una conversación médica realista en segundos. 
         Ideal para médicos ocupados que necesitan precisión y velocidad.
       </p>
-      <button className="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition">
-        Ver cómo funciona
-      </button>
+      
+      <button 
+  onClick={() => setMostrarExplicacion(!mostrarExplicacion)}
+  className="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition">
+  {mostrarExplicacion ? "Ocultar explicación" : "Conocer cómo funciona"}
+</button>
+<div
+  className={`transition-all duration-700 ease-in-out overflow-hidden ${
+    mostrarExplicacion ? 'max-h-[500px] opacity-100 mt-6' : 'max-h-0 opacity-0'
+  }`}
+>
+  <div className="flex flex-col md:flex-row gap-4">
+    <div className="flex-1 bg-teal-50 p-4 rounded-lg shadow text-center">
+      <h3 className="text-sm font-bold text-teal-700 mb-1">1. Ingreso de datos</h3>
+      <p className="text-xs text-gray-700">Seleccionas el cálculo y completas presión, glicemia, etc.</p>
+    </div>
+    <div className="flex-1 bg-teal-50 p-4 rounded-lg shadow text-center">
+      <h3 className="text-sm font-bold text-teal-700 mb-1">2. Evaluación</h3>
+      <p className="text-xs text-gray-700">La IA analiza y sugiere tratamientos basados en guías clínicas.</p>
+    </div>
+    <div className="flex-1 bg-teal-50 p-4 rounded-lg shadow text-center">
+      <h3 className="text-sm font-bold text-teal-700 mb-1">3. Resultados</h3>
+      <p className="text-xs text-gray-700">Recomendaciones claras, editables y listas para usar.</p>
+    </div>
+  </div>
+</div>
     </div>
   </div>
 </section>
