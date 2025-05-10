@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import Label from '../components/Label';
 import Modal from '../components/Modal';
+import { HeartPulse, AlertTriangle, CalendarCheck, Activity } from "lucide-react";
+
 
 const HypertensionManagement = () => {
   const [modalAbierto, setModalAbierto] = useState(false);
@@ -73,9 +75,62 @@ const HypertensionManagement = () => {
   </form>
 
   <Modal isOpen={modalAbierto} onClose={() => setModalAbierto(false)}>
-    <h2 className="text-xl font-semibold mb-4">Resultado del Cálculo</h2>
-    <p className="text-gray-700 mb-2">El tratamiento recomendado es...</p>
-    {/* Aquí puedes insertar los datos dinámicos del cálculo */}
+    
+  <div className="space-y-6 text-gray-800 p-4">
+      <h2 className="text-2xl font-bold text-teal-600 flex items-center gap-2">
+        <HeartPulse className="w-6 h-6" />
+        Ajuste de Tratamiento para Hipertensión
+      </h2>
+
+      {/* Resultado principal */}
+      <div className="bg-teal-50 p-4 rounded-lg border-l-4 border-teal-600 shadow-sm">
+        <p className="text-lg font-semibold">
+          Recomendación: <span className="text-teal-700">Aumentar Enalapril a 20 mg cada 12 horas</span>.
+        </p>
+        <p className="text-sm text-gray-600 mt-1">
+          Basado en presión arterial sistólica persistente sobre 150 mmHg en tratamiento actual.
+        </p>
+      </div>
+
+      {/* Detalles clínicos */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-white p-3 rounded-md shadow">
+          <p className="text-sm text-gray-500">Presión sistólica</p>
+          <p className="text-lg font-medium text-gray-800">156 mmHg</p>
+        </div>
+        <div className="bg-white p-3 rounded-md shadow">
+          <p className="text-sm text-gray-500">Presión diastólica</p>
+          <p className="text-lg font-medium text-gray-800">94 mmHg</p>
+        </div>
+        <div className="bg-white p-3 rounded-md shadow">
+          <p className="text-sm text-gray-500">Fármaco actual</p>
+          <p className="text-lg font-medium text-gray-800">Enalapril 10 mg cada 12 h</p>
+        </div>
+        <div className="bg-white p-3 rounded-md shadow">
+          <p className="text-sm text-gray-500">Frecuencia cardíaca</p>
+          <p className="text-lg font-medium text-gray-800">78 lpm</p>
+        </div>
+      </div>
+
+      {/* Advertencia o sugerencia */}
+      <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-md flex items-start gap-3">
+        <AlertTriangle className="text-yellow-500 w-5 h-5 mt-1" />
+        <p className="text-sm text-gray-700">
+          Sugerencia: reevaluar en 1 semana. Evitar combinación con AINEs si hay riesgo de deterioro renal.
+        </p>
+      </div>
+
+      {/* Información adicional */}
+      <div className="flex items-center justify-between text-sm text-gray-500 mt-2">
+        <span className="flex items-center gap-1">
+          <CalendarCheck className="w-4 h-4" /> Última evaluación: 10 mayo 2025
+        </span>
+        <span className="flex items-center gap-1">
+          <Activity className="w-4 h-4" /> Objetivo: &lt;140/90 mmHg
+        </span>
+      </div>
+    </div>
+
     <button
       onClick={() => setModalAbierto(false)}
       className="mt-4 bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600"

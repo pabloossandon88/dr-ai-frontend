@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import Label from '../components/Label';
 import Modal from '../components/Modal';
+import { AlertCircle, Syringe, CalendarCheck, Activity } from "lucide-react";
+
 
 
 const DiabetesAdjustment = () => {
@@ -62,9 +64,59 @@ const DiabetesAdjustment = () => {
             </form>
 
             <Modal isOpen={modalAbierto} onClose={() => setModalAbierto(false)}>
-              <h2 className="text-xl font-semibold mb-4">Resultado del Cálculo</h2>
-              <p className="text-gray-700 mb-2">El tratamiento recomendado es...</p>
-              {/* Aquí puedes insertar los datos dinámicos del cálculo */}
+              
+            <div className="space-y-6 text-gray-800 p-4">
+      <h2 className="text-2xl font-bold text-teal-600 flex items-center gap-2">
+        <Syringe className="w-6 h-6" />
+        Resultado del Ajuste de Insulina
+      </h2>
+
+      {/* Resultado principal */}
+      <div className="bg-teal-50 p-4 rounded-lg border-l-4 border-teal-600 shadow-sm">
+        <p className="text-lg font-semibold">
+          Dosis sugerida: <span className="text-teal-700">18 unidades de insulina basal</span> cada 24 horas.
+        </p>
+        <p className="text-sm text-gray-600 mt-1">Basado en los niveles de glicemia y peso corporal actual.</p>
+      </div>
+
+      {/* Detalles del cálculo */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-white p-3 rounded-md shadow">
+          <p className="text-sm text-gray-500">Peso del paciente</p>
+          <p className="text-lg font-medium text-gray-800">72 kg</p>
+        </div>
+        <div className="bg-white p-3 rounded-md shadow">
+          <p className="text-sm text-gray-500">Glicemia en ayunas</p>
+          <p className="text-lg font-medium text-gray-800">162 mg/dL</p>
+        </div>
+        <div className="bg-white p-3 rounded-md shadow">
+          <p className="text-sm text-gray-500">HbA1c estimada</p>
+          <p className="text-lg font-medium text-gray-800">7.8%</p>
+        </div>
+        <div className="bg-white p-3 rounded-md shadow">
+          <p className="text-sm text-gray-500">Frecuencia actual</p>
+          <p className="text-lg font-medium text-gray-800">1 vez/día</p>
+        </div>
+      </div>
+
+      {/* Recomendación final */}
+      <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-md flex items-start gap-3">
+        <AlertCircle className="text-yellow-500 w-5 h-5 mt-1" />
+        <p className="text-sm text-gray-700">
+          Recomendación: monitorear glicemia en ayunas por 3 días. Reevaluar dosis si se mantiene 130 mg/dL.
+        </p>
+      </div>
+
+      {/* Última actualización */}
+      <div className="flex items-center justify-between text-sm text-gray-500 mt-2">
+        <span className="flex items-center gap-1">
+          <CalendarCheck className="w-4 h-4" /> Cálculo realizado el: 10 mayo 2025
+        </span>
+        <span className="flex items-center gap-1">
+          <Activity className="w-4 h-4" /> Vía: Subcutánea
+        </span>
+      </div>
+    </div>
               <button
                 onClick={() => setModalAbierto(false)}
                 className="mt-4 bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600"
