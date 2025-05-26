@@ -1,8 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { Menu, User } from "lucide-react"; // Usamos íconos de lucide-react
+import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from "react";
+import UserMenu from "./UserMenu";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { user, logout } = useAuth0();
+
+  const [imageLoaded, setImageLoaded] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+ 
 
   return (
     <header className="fixed top-0 w-full bg-teal-400 text-white p-4 flex justify-between items-center z-50 shadow-md">
@@ -20,19 +28,8 @@ const Header = () => {
       </h1>
 
       {/* Menú de usuario */}
-      <div className="relative group">
-        <button className="p-2 hover:bg-teal-500 rounded">
-          <User className="w-6 h-6" />
-        </button>
-        <div className="absolute right-0 mt-2 w-32 bg-white text-black rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none group-hover:pointer-events-auto">
-          <button
-            onClick={() => navigate("/")}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-          >
-            Cerrar sesión
-          </button>
-        </div>
-      </div>
+      <UserMenu />
+
     </header>
   );
 };

@@ -1,13 +1,48 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Syringe, Bot, MousePointerClick } from "lucide-react";
+import { Syringe, Bot, MousePointerClick, User } from "lucide-react";
 import atencionDoctor from '../assets/images/atencion-doctor.png';
-
+import { useAuth0 } from "@auth0/auth0-react";
 export default function LandingPage() {
     const navigate = useNavigate();
     const [mostrarExplicacion, setMostrarExplicacion] = useState(false);
+    const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+
     return (
       <div className="bg-white text-gray-800">
+        
+        <header className="absolute top-0 w-full bg-transparent text-white p-4 flex justify-between items-center z-50">
+          
+          <h1
+            className="text-xl font-bold cursor-pointer select-none"
+            onClick={() => navigate("/home")}
+          >
+            {/*Asistente Clínico*/}
+          </h1>
+          
+          {/* Menú de usuario */}
+          <div className="relative group">
+            {!isAuthenticated ? (
+              <button
+                  onClick={() => loginWithRedirect()} 
+                  className="p-2 hover:bg-teal-500 rounded">
+                Iniciar Sesión
+              </button>
+              ) : (
+                <div>
+                  <strong>{user?.email}</strong>
+                  <button 
+                    onClick={() => navigate("/home")}
+                    className="p-2 hover:bg-teal-500 rounded">
+                    Ir al asistente
+                  </button>
+                  
+                </div>
+              )}
+              
+            
+          </div>
+        </header>
         {/* Hero Section */}
         <section className="relative w-full h-[60vh]" >
         <div
